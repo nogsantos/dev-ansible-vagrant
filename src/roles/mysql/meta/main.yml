@@ -1,0 +1,24 @@
+galaxy_info:
+  author: Fabricio Nogueira
+  description: Simple PyMySQL playbook
+  company: your company (optional)
+  license: license (GPLv2, CC-BY, etc)
+  min_ansible_version: 2.4
+  platforms:
+    - name: EL
+      versions:
+        - 5
+        - 6
+    - name: Ubuntu
+      versions:
+        - precise
+        - quantal
+        - raring
+        - saucy
+        - focalFossa
+  categories:
+    - database:sql
+
+  galaxy_tags: []
+
+dependencies: []

@@ -1,0 +1,67 @@
+---
+- name: "Make sure pymysql is present"
+  become: yes
+  pip:
+    name: pymysql
+    state: present
+
+- name: "Add the OS specific variables"
+  include_vars: "{{ ansible_os_family }}.yml"
+
+- name: "Install the mysql packages in Debian derivatives"
+  become: yes
+  apt:
+    pkg:
+      - mysql-server
+      - python3-mysqldb
+      - python3-selinux
+    state: present
+    update_cache: yes
+  environment: "{{ env }}"
+
+- name: "Copy the my.cnf file"
+  become: yes
+  template:
+    owner: root
+    group: mysql
+    mode: 0770
+    src: my.cnf.{{ ansible_os_family }}.j2
+    dest: "{{ mysql_conf_dir }}/my.cnf"
+  notify:
+    - restart mysql
+
+- name: "copy .my.cnf file with root password credentials"
+  template:
+    src: .my.cnf.j2
+    dest: ~/.my.cnf
+    mode: 0444
+
+- name: "Create the directory /etc/mysql/conf.d"
+  become: yes
+  file:
+    path: /etc/mysql/conf.d
+    state: directory
+  notify:
+    - restart mysql
+
+- name: "Deploy mysql config to conf.d"
+  become: yes
+  template:
+    src: mysql.cnf.j2
+    dest: /etc/mysql/conf.d/mysql.cnf
+  notify:
+    - restart mysql
+
+- name: "Start the mysql services"
+  become: yes
+  service:
+    name: "{{ mysql_service }}"
+    state: started
+    enabled: yes
+
+- name: "Create test database"
+  become: yes
+  mysql_db:
+    name: test_db
+    state: present
+    login_unix_socket: /var/run/mysqld/mysqld.sock

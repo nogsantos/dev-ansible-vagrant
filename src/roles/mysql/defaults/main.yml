@@ -1,0 +1,17 @@
+---
+# defaults file for mysql
+
+mysql_port: 3306
+mysql_bind_address: "0.0.0.0"
+mysql_user: root
+mysql_root_db_pass: "12345678"
+
+mysql_users:
+  - name: benz
+    pass: foobar
+    priv: "*.*:ALL"
+
+mysql_repl_role: master
+mysql_db_id: 7
+
+mysql_sql_mode: STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION

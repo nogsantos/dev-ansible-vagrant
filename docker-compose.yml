@@ -1,0 +1,25 @@
+version: "3.7"
+services:
+  ansible:
+    build:
+      context: .
+      target: base
+    container_name: ansible
+    volumes:
+      - type: bind
+        source: ./src/keys
+        target: /etc/ansible/keys
+      - type: bind
+        source: ./src/playbooks
+        target: /etc/ansible/playbooks
+      - type: bind
+        source: ./src/roles
+        target: /etc/ansible/roles
+      - type: bind
+        source: ./src/conf/ansible.cfg
+        target: /etc/ansible/ansible.cfg
+      - type: bind
+        source: ./src/conf/hosts
+        target: /etc/ansible/hosts
+    stdin_open: true
+    tty: true

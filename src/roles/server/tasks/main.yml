@@ -1,0 +1,31 @@
+---
+# tasks file for server
+- name: 'Updating source list'
+  become: yes
+  apt:
+    update_cache: yes
+    cache_valid_time: 3600
+
+- name: 'Installing xz-utils'
+  become: yes
+  apt:
+    name: xz-utils
+    state: present
+
+- name: 'Installing python3-apt'
+  become: yes
+  apt:
+    name: python3-apt
+    state: present
+
+- name: 'Installing python-apt'
+  become: yes
+  apt:
+    name: python-apt
+    state: present
+
+- name: 'Installing pip3'
+  become: yes
+  apt:
+    name: python3-pip
+    state: present

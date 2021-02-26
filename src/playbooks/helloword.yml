@@ -1,0 +1,6 @@
+---
+- hosts: ubuntu20
+  name: 'Just creating a file'
+  tasks:
+    - shell: 'echo hello > ~/HELLO-WORD'
+    - shell: echo $(python3 --version)

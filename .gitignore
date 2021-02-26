@@ -1,0 +1,10 @@
+# exclude everything
+ansible/keys/*
+# exception to the rule
+!ansible/keys/.gitkeep
+
+ansible/playbooks/*.retry
+
+.vagrant
+
+src/keys/*

@@ -1,0 +1,5 @@
+---
+- hosts: ubuntu20
+  roles:
+    - server
+    - mysql

@@ -1,0 +1,9 @@
+---
+config:
+  domain: 'dev'
+  network_prefix: '172.22.1'
+nodes:
+  ubuntu20:
+    memory: 1024
+    cpus: 1
+    box: ubuntu/focal64
