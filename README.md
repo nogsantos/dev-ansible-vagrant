@@ -1,8 +1,8 @@
 # Ansible files
 
-Docker container to provisioning with ansible. Enables to create and edit files on host and run ansible commands on container.
+Docker container to provisioning with ansible. Enables to create and edit files on the host and run ansible commands in the container.
 
-Use for development/tests environment
+Use it for development/tests environment
 
 ## Premisses
 
@@ -18,7 +18,7 @@ Use for development/tests environment
 vagrant up
 ```
 
-_By default, the box is `ubuntu/focal64` named as `ubuntu20`. For more VM options, add them on `environment.yaml` file_
+_By default, the box is `ubuntu/focal64` named as `ubuntu20`. For more VM options, add them on the `environment.yaml` file_
 
 **Access the box**
 
@@ -28,7 +28,7 @@ vagrant ssh
 
 **Config VM SSH access**
 
-On host,
+In host,
 
 execute to add in host vagrant config, trust identity
 
@@ -64,7 +64,7 @@ In container Ansible work dir is `/etc/ansible`
 
 On Host
 
-Ssh keys must be generated and hosted in `src/keys` dir.
+SSH keys must be generated and hosted in `src/keys` dir.
 
 ### Generate ssh keys
 
